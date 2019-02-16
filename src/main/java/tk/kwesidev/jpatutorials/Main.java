@@ -1,11 +1,12 @@
 package tk.kwesidev.jpatutorials;
 
+import java.io.IOException;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.io.IOException;
-import java.util.List;
 
 public class Main {
 	private static final EntityManagerFactory emfactory;
@@ -32,7 +33,7 @@ public class Main {
 
 		} catch (Exception e) {
 
-			if (tx.isActive()) {
+			if (tx.isActive() && tx != null) {
 
 				tx.rollback();
 			}
@@ -61,7 +62,7 @@ public class Main {
 
 		} catch (Exception e) {
 
-			if (tx.isActive()) {
+			if (tx.isActive() && tx != null) {
 
 				tx.rollback();
 			}
@@ -77,13 +78,14 @@ public class Main {
 	public static void listDevelopers() {
 		try {
 			manager = emfactory.createEntityManager();
-			List<Developer> developers = manager.createQuery("SELECT d FROM Developer d",Developer.class).getResultList();
+			List<Developer> developers = manager.createQuery("SELECT d FROM Developer d", Developer.class)
+					.getResultList();
 			for (Developer developer : developers) {
 
 				System.out.println("FirstName:" + developer.getFirstName() + ",LastName:" + developer.getLastName());
 				System.out.println("Projects");
-				for(Project project: developer.getProjects()) {
-					System.out.println("Project Title :"+project.getTitle());
+				for (Project project : developer.getProjects()) {
+					System.out.println("Project Title :" + project.getTitle());
 				}
 			}
 
@@ -97,9 +99,10 @@ public class Main {
 		}
 
 	}
+
 	public static void main(String[] args) throws java.io.FileNotFoundException, IOException {
 		// addDeveloper("Jacky","Smith");
-		//assignProject(11, "Mobile App for Insurance");
+		// assignProject(11, "Mobile App for Insurance");
 		listDevelopers();
 	}
 }
