@@ -1,6 +1,7 @@
 JPA 
 ==
-[![Build Status](https://travis-ci.org/kwesidev/JPAtutorial.svg?branch=master)](https://travis-ci.org/kwesidev/JPAtutorial) <br/>
+![workflow](https://github.com/kwesidev/JPAtutorial/actions/workflows/run.yml/badge.svg)
+<br/>
 Many to Many Relation <br/>
 
 System Requirements
