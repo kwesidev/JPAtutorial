@@ -14,7 +14,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 import java.util.ArrayList;
-
 @Entity
 @Table(name = "developers")
 class Developer implements Serializable {
@@ -43,55 +42,36 @@ class Developer implements Serializable {
 	public Developer(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-
 	}
 
 	public void setFirstName(String firstname) {
-
 		this.firstName = firstname;
-
 	}
-
 	public void setLastName(String lastname) {
-
 		this.lastName = lastname;
-
 	}
-
 	public Integer getId() {
-
 		return id;
-
 	}
-
 	public void addProject(Project project) {
-
 		if (!(projects.contains(project))) {
 			projects.add(project);
 		}
-
 	}
-
 	public void removeProject(Project project) {
-
 		if (projects.contains(project)) {
-
 			projects.remove(project);
 		}
 	}
-
+	
 	public List<Project> getProjects() {
-
 		return this.projects;
 	}
-
+	
 	public String getFirstName() {
-
 		return this.firstName;
 	}
-
 	public String getLastName() {
-
 		return this.lastName;
 	}
 
@@ -105,12 +85,9 @@ class Developer implements Serializable {
 
 		else
 			return false;
-
 	}
-
 	@Override
 	public int hashCode() {
-
 		return Objects.hash(id, firstName, lastName);
 	}
 }

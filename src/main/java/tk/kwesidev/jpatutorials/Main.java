@@ -2,7 +2,6 @@ package tk.kwesidev.jpatutorials;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -10,31 +9,24 @@ import javax.persistence.Persistence;
 
 public class Main {
 	private static final EntityManagerFactory emfactory;
-
 	static {
-
 		emfactory = Persistence.createEntityManagerFactory("jpatest");
-
 	}
 	private static EntityManager manager = null;
 
 	public static void addDeveloper(String firstName, String lastName) {
-
 		EntityTransaction tx = null;
 		try {
 			manager = emfactory.createEntityManager();
 			tx = manager.getTransaction();
 			tx.begin();
-
 			Developer developer = new Developer(firstName, lastName);
 			manager.persist(developer);
 			manager.flush();
 			tx.commit();
-
 		} catch (Exception e) {
-
+			
 			if (tx.isActive() && tx != null) {
-
 				tx.rollback();
 			}
 			e.printStackTrace();
@@ -46,7 +38,6 @@ public class Main {
 	}
 
 	public static void assignProject(Integer developerId, String projectTitle) {
-
 		EntityTransaction tx = null;
 		try {
 			manager = emfactory.createEntityManager();

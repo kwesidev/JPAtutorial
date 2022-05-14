@@ -16,7 +16,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "projects")
 public class Project implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,18 +31,14 @@ public class Project implements Serializable {
 	}
 
 	public Project(String title) {
-
 		this.title = title;
 
 	}
-
 	public void setTitle(String title) {
-
 		this.title = title;
 	}
 
 	public List<Developer> getDevelopers() {
-
 		return developers;
 	}
 
@@ -51,12 +46,10 @@ public class Project implements Serializable {
 
 		return this.title;
 	}
-
 	public Integer getId() {
-
 		return this.id;
 	}
-
+	
 	@Override
 	public boolean equals(Object object) {
 		Project project = (Project) object;
@@ -77,7 +70,6 @@ public class Project implements Serializable {
 
 	@Override
 	public int hashCode() {
-
 		return Objects.hash(id, title);
 	}
 
