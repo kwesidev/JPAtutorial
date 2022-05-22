@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import org.flywaydb.core.Flyway;
 
 public class Main {
 	private static final EntityManagerFactory emfactory;
@@ -92,6 +93,9 @@ public class Main {
 	}
 
 	public static void main(String[] args) throws java.io.FileNotFoundException, IOException {
+        // Start Database Migration
+		Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost:5432/jpatest","postgres","root").load();
+		flyway.migrate();
 		// addDeveloper("Jacky","Smith");
 		// assignProject(11, "Mobile App for Insurance");
 		listDevelopers();
