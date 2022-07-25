@@ -1,4 +1,4 @@
-package tk.kwesidev.jpatutorials;
+package com.github.kwesidev.jpatutorials;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,7 +26,7 @@ public class Main {
 			manager.flush();
 			tx.commit();
 		} catch (Exception e) {
-			
+
 			if (tx.isActive() && tx != null) {
 				tx.rollback();
 			}
@@ -68,6 +68,7 @@ public class Main {
 	}
 
 	public static void listDevelopers() {
+
 		try {
 			manager = emfactory.createEntityManager();
 			List<Developer> developers = manager.createQuery("SELECT d FROM Developer d", Developer.class)
@@ -93,8 +94,9 @@ public class Main {
 	}
 
 	public static void main(String[] args) throws java.io.FileNotFoundException, IOException {
-        // Start Database Migration
-		Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost:5432/jpatest","postgres","root").load();
+		// Start Database Migration
+		Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost:5432/jpatest", "postgres", "root")
+				.load();
 		flyway.migrate();
 		// addDeveloper("Jacky","Smith");
 		// assignProject(11, "Mobile App for Insurance");
